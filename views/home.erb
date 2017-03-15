@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>iTunes API</title>
+	<style>
+	.song {
+		display: inline-block;
+		width: 400px;
+	}
+	</style>	
+</head>
+<body>
+	<h1>iTunes</h1>
+	<form method="post">
+		<label for="artist">Artist</label>
+		<input name="artist" value="<%= @artist %>" /><br />
+		<input type="submit" value="Search" />
+	</form>
+	<h2>Results</h2>
+	<% if @results %>
+		<% @results.each do |song| %>
+			<div class="song">
+				<h3><%= song[:name] %></h3>
+				<img src="<%= song[:picture] %>" />
+				<h4><%= song[:price] %></h4>
+			</div>
+		<% end %>
+	<% else %>
+	<p>So sad, no results.</p>
+	<% end %>
+</body>
+</html>
